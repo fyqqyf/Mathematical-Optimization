@@ -5,7 +5,7 @@ function [s,phis,k,G,E]=golds(phi,a,b,delta,epsilon)
 % 其第k行分别是a,p,q,b的第k次迭代值[ak,pk,qk,bk],
 % E=[ds,dphi], 分别是s和phis的误差限.
 x=0:0.0001:1;
-y=feval(phi,x);
+y=feval(phi,x);%句柄，使用phi；x作为输入
 plot(x,y);
 hold on;
 t=(sqrt(5)-1)/2;%缩短率
