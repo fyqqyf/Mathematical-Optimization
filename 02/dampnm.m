@@ -29,6 +29,10 @@ while(k<maxk)
         m=m+1;
     end
     x1=x0+rho^mk*dk;
+    plot3(x1(1),x1(2),feval(fun,x1),'.','LineWidth',1,...
+    'MarkerEdgeColor','y',...
+    'MarkerFaceColor','y',...
+    'MarkerSize',20)
     p=plot3([x0(1);x1(1)],[x0(2),x1(2)],[feval(fun,x0),feval(fun,x1)],'b');
     x0=x1;
     k=k+1;

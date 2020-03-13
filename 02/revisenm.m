@@ -4,12 +4,12 @@ function [x,val,k]=revisenm(fun,gfun,Hess,x0)
 % 目标函数值,梯度,Hesse 阵的函数
 %输出: x, val分别是近似最优点和最优值, k是迭代次数.
 n=length(x0); maxk=150;
-rho=0.55;sigma=0.5; tau=0.0;
+rho=0.5;sigma=0.5; tau=0.5;%修正方法后面会提到，现在简单地不正定的时候取两倍
 k=0; epsilon=1e-3;
 figure(1)
 clf
 hold on
-fsurf(@(x,y) 4*x^2+y^2-x^2*y,'EdgeColor','none',...
+fsurf(@(x,y) 4.*(x).^2+(y).^2-(x).^2.*(y),'EdgeColor','r',...
     'ShowContours','on',...
     'FaceAlpha',0.5);
 plot3(x0(1),x0(2),feval(fun,x0),'.','LineWidth',1,...
@@ -31,6 +31,10 @@ while(k<maxk)
         m=m+1;
     end
     x1=x0+rho^mk*dk;
+    plot3(x1(1),x1(2),feval(fun,x1),'.','LineWidth',1,...
+        'MarkerEdgeColor','y',...
+        'MarkerFaceColor','y',...
+        'MarkerSize',20)
     p=plot3([x0(1);x1(1)],[x0(2),x1(2)],[feval(fun,x0),feval(fun,x1)],'b');
     x0=x1;
     k=k+1;
