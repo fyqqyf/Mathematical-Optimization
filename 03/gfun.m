@@ -1,9 +1,7 @@
 function f=gfun(x,p,n,m)
 f=0;
-s1=0;
-s2=0;
-v1=zeros(n,3);
-v2=zeros(n,3);
+
+
 %syms p1;
 %syms p2;
 %syms p3;
@@ -24,6 +22,10 @@ v2=zeros(n,3);
 %f23(p1, p2, p3, x0) =(p1*p2*exp(p3 - p1*x0))/(exp(p3 - p1*x0) + 1)^2 - (2*p1*p2*exp(2*p3 - 2*p1*x0))/(exp(p3 - p1*x0) + 1)^3
 %需要时可用 subs eval 求值（但比较慢）
 for i=1:m
+    s1=0;
+    s2=0;
+    v1=zeros(n,3);
+    v2=zeros(n,3);
     for j=1:n
         x1=-p(j,1).*x(i)+p(j,3);
         s0=sigmoid(x1);
@@ -38,8 +40,8 @@ for i=1:m
         v2(j,3)=(p(j,1)*p(j,2)*exp(p(j,3) - p(j,1)*x(i)))/(exp(p(j,3) - p(j,1)*x(i)) + 1)^2 - (2*p(j,1)*p(j,2)*exp(2*p(j,3) - 2*p(j,1)*x(i)))/(exp(p(j,3) - p(j,1)*x(i)) + 1)^3;
         %v2=v2+[f24,f25,f26]';
     end
-    v3=(2-x(i)).*v1+(x(i)-1).*v2;
-    f0=(2-1/x(i))*s1+(x(i)-1).*s2-x(i)^3+(2/5)/x(i);
+    v3=(2-1/x(i)).*v1+(x(i)-1).*v2;
+    f0=(2-1/x(i)).*s1+(x(i)-1).*s2-x(i)^3+(2/5)/x(i);
     f=f+2.*f0.*v3;
 end
 %f=f';
