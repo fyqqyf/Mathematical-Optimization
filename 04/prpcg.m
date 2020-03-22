@@ -1,5 +1,5 @@
-function [val,k]=frcg(fun,gfun)
-% 功能: 用FR共轭梯度法求解无约束问题: min f(x)
+function [val,k]=prpcg(fun,gfun)
+% 功能: 用PRP共轭梯度法求解无约束问题: min f(x)
 %输入: x0是初始点, fun, gfun分别是目标函数和梯度
 %输出: x, val分别是近似最优点和最优值, k是迭代次数.
 maxk=5000; %最大迭代次数
@@ -15,7 +15,7 @@ while(k<maxk)
     if(itern==1)
         d=-g;
     else
-        beta=(g'*g)/(g0'*g0);
+        beta=(g'*(g-g0))/(g0'*g0);
         d=-g+beta*d0; gd=g'*d;
         if(gd>=0.0)
             d=-g;
