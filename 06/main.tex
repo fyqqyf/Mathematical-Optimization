@@ -1,0 +1,144 @@
+\documentclass[a4 paper]{article}
+% Set target color model to RGB
+\usepackage[inner=2.0cm,outer=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage[UTF8, scheme=plain, punct=plain, zihao=false]{ctex}%使用中文
+\usepackage[rgb]{xcolor}
+\usepackage{verbatim}
+\usepackage{subcaption}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,tikz,amssymb,tkz-linknodes}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true, urlcolor=blue,  linkcolor=blue, citecolor=blue]{hyperref}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{rotating}
+%\usetikzlibrary{through,backgrounds}
+%\usetikzlibrary{shadows}
+% \usepackage[francais]{babel}
+\usepackage{booktabs}
+\input{macros.tex}
+
+
+\begin{document}
+\homework{Chapter~6~Problems}{Due: 13/4/20}{鄢煜尘}{}{傅宇千}{2018302120169}
+
+\problem{10}{}
+\textbf{Solution}:
+
+\subproblem{1}
+
+$$\mathcal{L}(x,\lambda) =(x_1-1)^2+(x_2-2)^2-\lambda[(x_1-1)^2-5x_2]$$
+
+KKT条件为
+$$\frac{\partial \mathcal{L}}{\partial x_1}=2(1-\lambda)(x_1-1)=0$$
+$$\frac{\partial \mathcal{L}}{\partial x_2}=2(x_2-2)+5\lambda=0$$
+$$(x_1-1)^2-5x_2=0$$
+解得
+$$x^\ast=(1,0)^T,\lambda=\frac{4}{5}$$
+$$\mathcal{F}_1^\ast=\{d|d\neq 0,(0,-5)^Td=0\}$$ 
+可以设$d=(m,0)^T,m\neq 0$
+$$W^\ast=\begin{pmatrix}\frac{2}{5}& 0\\0& 2\end{pmatrix}$$
+所以 $$ d^T W^\ast d=\frac{2}{5} m^2>0$$
+这个KKT点为最优解
+
+\subproblem{2}
+
+$$\mathcal{L}(x,\lambda) =(x_1+x_2)^2+2x_1+x_2^2-\lambda_1(4-x_1-3x_2)-\lambda_2(3-2x_1-x_2)-\lambda_3 x_1-\lambda_4 x_2$$
+KKT条件为
+$$\frac{\partial \mathcal{L}}{\partial x_1}=2(x_1+x_2)+2+\lambda_1+2\lambda_2-\lambda_3=0$$
+$$\frac{\partial \mathcal{L}}{\partial x_2}=w(x_1+x_2)+2x_2=3\lambda_1+\lambda_2-\lambda_4=0$$
+$$\lambda_1(4-x_1-3x_2)=\lambda_2(3-2x_1-x_2)=\lambda_3 x_1=\lambda_3 x_2=0$$
+$$\lambda_i\geqslant 0  , i=1,2,3,4$$
+$$4-x_1-3x_2\geqslant 0$$
+$$3-2x_1-x_2 \geqslant 0$$
+$$x_1 \geqslant 0,x_2 \geqslant 0$$
+解得
+$$x^\ast=(0,0)^T,\lambda=(0,0,2,0)^T$$
+$$\mathcal{F}_1^\ast=\{d|d\neq 0,(1,0)^Td=0\}$$ 
+可以设$d=(0,m)^T,m\neq 0$
+$$W^\ast=\begin{pmatrix}2& 2\\2& 4\end{pmatrix}$$
+所以 $$ d^T W^\ast d=2 m^2>0$$
+这个KKT点为最优解
+
+\problem{11}{}
+\textbf{Solution}:
+
+\subproblem{1}
+
+$$\mathcal{L}(x,\lambda) =x_1^2+4x_2^2+16x_3^2-\lambda(x_1-1)$$
+KKT条件为
+$$\frac{\partial \mathcal{L}}{\partial x_1}=2x_1-\lambda=0$$
+$$\frac{\partial \mathcal{L}}{\partial x_2}=8x_2=0$$
+$$\frac{\partial \mathcal{L}}{\partial x_3}=32x_3=0$$
+$$x_1-1=0$$
+解得
+$$x^\ast=(1,0,0)^T,\lambda=2$$
+$$\mathcal{F}_1^\ast=\{d|d\neq 0,(1,0,0)^Td=0\}$$
+不妨设$d=(0,m,n)^T,m,n\neq 0$
+$$W^\ast=\begin{pmatrix}2& 0 & 0\\0& 8 & 0\\0&0&32\end{pmatrix}$$
+所以 $$ d^T W^\ast d=8m^2+32n^2>0$$
+均为最优解
+
+\subproblem{2}
+
+$$\mathcal{L}(x,\lambda) =x_1^2+4x_2^2+16x_3^2-\lambda(x_1 x_2-1)$$
+KKT条件为
+$$\frac{\partial \mathcal{L}}{\partial x_1}=2x_1-\lambda x_2=0$$
+$$\frac{\partial \mathcal{L}}{\partial x_2}=8x_2-\lambda x_1=0$$
+$$\frac{\partial \mathcal{L}}{\partial x_3}=32x_3=0$$
+$$x_1x_2-1=0$$
+解得
+$$x_1^\ast=(\sqrt{2},\frac{1}{\sqrt{2}},0)^T,x_2^\ast=(-\sqrt{2},-\frac{1}{\sqrt{2}},0)^T,\lambda=4$$
+$$\mathcal{F}_1^\ast=\{d|d\neq 0,(\frac{1}{\sqrt{2}},\sqrt{2},0)^Td=0\}$$
+不妨设$d=(2,-1,m)^T,m\neq 0$
+$$W^\ast=\begin{pmatrix}2& -4 & 0\\-4& 8 & 0\\0&0&32\end{pmatrix}$$
+所以 $$ d^T W^\ast d=32(1+m^2)>0$$
+均为最优解
+
+\subproblem{3}
+
+$$\mathcal{L}(x,\lambda) =x_1^2+4x_2^2+16x_3^2-\lambda(x_1 x_2 x_3-1)$$
+KKT条件为
+$$\frac{\partial \mathcal{L}}{\partial x_1}=2x_1-\lambda x_2 x_3=0$$
+$$\frac{\partial \mathcal{L}}{\partial x_2}=8x_2-\lambda x_1 x_3=0$$
+$$\frac{\partial \mathcal{L}}{\partial x_3}=32x_3-\lambda x_1 x_2=0$$
+$$x_1x_2x_3-1=0$$
+解得
+$$x_1^\ast=(2,1,\frac{1}{2})^T,x_2^\ast=(2,-1,-\frac{1}{2})^T,x_3^\ast=(-2,1,-\frac{1}{2})^T,x_4^\ast=(-2,-1,\frac{1}{2})^T,\lambda=8$$
+$$\mathcal{F}_1^\ast=\{d|d\neq 0,(x_2 x_3,x_1x_3,x_1x_2)^Td=0\}$$
+不妨设$d=(m,n,q)^T,d\neq 0$
+$$W^\ast=\begin{pmatrix}2& -8x_3 & -8x_2\\-8x_3& 8 & -8x_1\\-8x_2&-8x_1&32\end{pmatrix}$$
+所以，化简后 $$ d^T W^\ast d=2(2m\pm 4n)^2 \geqslant 0$$当$2m\pm4n=0$时取0
+
+故均不为最优解
+
+\problem{12}{}
+\textbf{Solution}:
+
+\subproblem{1}
+
+$$\mathcal{L}(x,\lambda) =c_y x_1^{\frac{1}{4}} x_2^{\frac{1}{4}}-c_1(x_1-k_1)-c_2(x_2-k_2)-\lambda_1 x_1-\lambda_2 x_2$$
+KKT条件为
+$$\frac{\partial \mathcal{L}}{\partial x_1}=\frac{1}{4}c_y x_1^{-\frac{3}{4}}x_2^{\frac{1}{4}}-c_1-\lambda_1=0$$
+$$\frac{\partial \mathcal{L}}{\partial x_2}=\frac{1}{4}c_y x_1^{\frac{1}{4}} x_2^{-\frac{3}{4}}-c_2-\lambda_2=0$$
+$$\lambda_1x_1=0$$
+$$\lambda_2x_2=0$$
+$$x_1,x_2 >0$$
+$$\lambda_i \geqslant 0, i=1,2$$
+解得
+$$x^\ast=(\frac{1}{16}c_y^2 (c_1c_2)^{-\frac{1}{2}}c_1^{-1},\frac{1}{16}c_y^2 (c_1c_2)^{-\frac{1}{2}}c_2^{-1})^T,\lambda=(0,0)^T$$
+
+\subproblem{2}
+
+$$x_1=x_2=\frac{1}{16}$$
+
+$$y=\frac{1}{4}$$
+
+\subproblem{3}
+
+$$x_1=x_2=\frac{1}{16}$$
+
+$$y=\frac{1}{4}$$
+
+与(2)没有区别，因为y的最优值、该问题的KKT点均与$k_1,k_2$的取值无关
+
+\end{document} 
