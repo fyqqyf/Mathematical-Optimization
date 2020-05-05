@@ -1,9 +1,4 @@
 function [x,val,k]=bfgs(fun,gfun,x0,varargin)
-%功能: 用BFGS算法求解无约束问题: min f(x)
-%输入: x0是初始点, fun, gfun分别是目标函数及其梯度;
-% varargin是输入的可变参数变量, 简单调用bfgs时可以忽略它,
-% 但若其它程序循环调用该程序时将发挥重要的作用
-%输出: x, val分别是近似最优点和最优值, k是迭代次数.
 maxk=1000; %给出最大迭代次数
 rho=0.55;sigma=0.4; epsilon=1e-5;
 k=0; n=length(x0);

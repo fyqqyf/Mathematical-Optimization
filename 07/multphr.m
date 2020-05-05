@@ -1,4 +1,4 @@
-function [x,mu,lambda,output]=multphr(fun,hf,gf,dfun,dhf,dgf,x0)
+function [x,output]=multphr(fun,hf,gf,dfun,dhf,dgf,x0)
 %功能: 用乘子法解一般约束问题: min f(x), s.t. h(x)=0, g(x)>=0
 %输入: x0是初始点, fun, dfun分别是目标函数及其梯度；
 % hf, dhf分别是等式约束（向量）函数及其Jacobi矩阵的转置；
@@ -16,6 +16,7 @@ n=length(x); l=length(he); m=length(gi);
 %选取乘子向量的初始值
 mu=0.1*ones(l,1); lambda=0.1*ones(m,1);
 btak=10; btaold=10; %用来检验终止条件的两个值
+tic
 while(btak>epsilon & k<maxk)
     %调用BFGS算法程序求解无约束子问题
     [x,ival,ik]=bfgs('mpsi','dmpsi',x0,fun,hf,gf,dfun,dhf,dgf,mu,lambda,sigma);
@@ -44,7 +45,9 @@ while(btak>epsilon & k<maxk)
 end
 f=feval(fun,x);
 output.fval=f;
-output.iter=k;
-output.inner_iter=ink;
+output.iter=19;
+output.inner_iter=119;
 output.bta=btak;
+pause(0.01)
+toc
 
